@@ -1,27 +1,16 @@
 import  React from 'react';
 import  ReactDOM from 'react-dom/client';
 
-const heading = React.createElement(
-    'h1',{
-        id:"title"
-    },'Heading 1'
-);
 
-console.log(heading);
+const Title = ()=> (<h1 id="title" key="h1">Namaste React</h1>);
 
-const heading2 = React.createElement(
-    'h2',{
-        id: 'title1'
-    } , 'Heading 2'
-);
+const HeaderComponent = ()=>(
+    <div>
+        <Title/>
+        <h2>Namaste React from Functional Component</h2>
+        <h3>This is H3 Tag</h3>
+    </div>);
 
-const container = React.createElement(
-    'div',{
-        id: 'container'
-    },
-    [heading,heading2]
-
-);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(container);
+root.render(<HeaderComponent/>);
