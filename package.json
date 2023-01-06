@@ -1,0 +1,26 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "This is react Basics",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhishekkumarsuraj/react-basics.git"
+  },
+  "author": "Abhishek Suraj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhishekkumarsuraj/react-basics/issues"
+  },
+  "homepage": "https://github.com/abhishekkumarsuraj/react-basics#readme",
+  "devDependencies": {
+    "parcel": "^2.8.2",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
