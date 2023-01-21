@@ -1,3 +1,4 @@
 .parcel-cache/
+extensions.json
 dist/
 node_modules/

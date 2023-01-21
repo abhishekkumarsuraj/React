@@ -11,6 +11,7 @@
     justify-content: space-between;
     margin: 10px;
     border: 1px solid black;
+    background: rgb(240, 233, 182);
 }
 
 .nav-items>ul {
@@ -39,4 +40,14 @@
     flex-wrap: wrap;
 }
 
+.shimmer-card {
+    width: 200px;
+    height: 200px;
+    background: lightgrey;
+    margin: 20px;
+}
 
+
+.menu {
+    display: flex;
+}
