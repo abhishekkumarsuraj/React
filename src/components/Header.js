@@ -1,6 +1,7 @@
 import Logo from '../assets/img/foodVilla.png'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useOnline from '../utils/useOnline';
 
 export const Title = ()=> (<a href='/'><img className='logo'
                  alt='logo'
@@ -10,6 +11,7 @@ export const Title = ()=> (<a href='/'><img className='logo'
 
 const Header = ()=>{
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const isOnline = useOnline();
     return(
     <div className='header'>
         <Title/>
@@ -19,8 +21,10 @@ const Header = ()=>{
             <li><Link to='/about'>About Us</Link></li>
             <li><Link to='/contact'>Contact Us</Link></li>
             <li>Cart</li>
+            <li><Link to='/instamart'>Instamart</Link></li>
         </ul>
         </div>
+        <h1> { isOnline? "🟢" : "🔴"}</h1>
         {
             isLoggedIn ? <button onClick={()=> setIsLoggedIn(false)}>Logout</button> :
             <button onClick={()=> setIsLoggedIn(true)}>Login</button>
