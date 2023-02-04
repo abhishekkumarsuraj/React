@@ -5,11 +5,11 @@ import Shimmer from "./Shimmer";
 import { filterData } from "../utils/helper";
 import useRestaurantList from "../utils/useRestaurantList";
 import useOnline from "../utils/useOnline";
-
+import { FETCH_RESTAURANT_LIST } from "../constants";
 
 
 const Body = ()=>{
-    const [searchInput, setSearchInput] = useState("Search");
+    const [searchInput, setSearchInput] = useState("");
     const [filteredRestaurant, setFilteredRestaurants] = useState([]);
     const [allRestaurants, setAllRestaurants] = useState([]); 
 
@@ -23,7 +23,7 @@ const Body = ()=>{
 
     async function getRestaurants(){
         const data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.029462&lng=80.161667&page_type=DESKTOP_WEB_LISTING");
+            FETCH_RESTAURANT_LIST);
         const json = await data.json();
         console.log(json?.data?.cards[2]?.data?.data?.cards)
         setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards)
@@ -42,11 +42,11 @@ const Body = ()=>{
 
     return allRestaurants?.length === 0 ? (<Shimmer/>):(
         <>
-         <div className="search-container">
-                <input type="text" className="search-input" 
-                placeholder="search" value={searchInput}
+         <div className=" bg-pink-50 m-3 rounded-lg">
+                <input type="text" className="hover:bg-green-100" 
+                placeholder=" search " value={searchInput}
                 onChange={(e)=>{ setSearchInput(e.target.value)}}></input>
-                <button className="submit-btn"
+                <button className="p-2 m-2 bg-purple-700 hover:bg-purple-900 text-white rounded-lg"
                 onClick={()=>{
                     //need to filter the data
                     const data = filterData(searchInput,allRestaurants);
@@ -54,7 +54,7 @@ const Body = ()=>{
                     setFilteredRestaurants(data);
                 }}>Submit</button>
          </div>
-        <div className='restaurant-list'>
+        <div className='flex flex-wrap'>
             {filteredRestaurant.map((restaurant)=>{
              return <Link to={"/resuarant/"+restaurant.data.id} key={restaurant.data.id} >
                 <RestaurantCard restaurant={restaurant} /></Link>
