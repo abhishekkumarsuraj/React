@@ -3,6 +3,8 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import useOnline from '../utils/useOnline';
 import UserContext from '../utils/UserContext';
+import { useSelector } from 'react-redux';
+// import store from '../utils/store';
 
 export const Title = ()=> (<a href='/'><img className='h-28 p-2'
                  alt='logo'
@@ -14,6 +16,8 @@ const Header = ()=>{
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const isOnline = useOnline();
     const  {user} =useContext(UserContext);
+    const cartItems = useSelector(store => store.cart.items);
+    console.log(cartItems);
     return(
     <div className='flex justify-between bg-pink-50 shadow-lg my-5'>
         <Title/>
@@ -22,8 +26,8 @@ const Header = ()=>{
             <li className='px-2 font-medium'><Link to='/'>Home</Link></li>
             <li className='px-2 font-medium'><Link to='/about'>About Us</Link></li>
             <li className='px-2 font-medium'><Link to='/contact'>Contact Us</Link></li>
-            <li className='px-2 font-medium'>Cart</li>
             <li className='px-2 font-medium'><Link to='/instamart'>Instamart</Link></li>
+            <li className='px-2 font-medium'><Link to='/cart'>Cart - {cartItems.length} Items</Link></li>
         </ul>
         </div>
         <h1 className='py-12 px-5 '> { isOnline? "🟢 Online" : "🔴 Offline"}</h1>
