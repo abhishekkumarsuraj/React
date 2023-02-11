@@ -6,7 +6,7 @@ import UserContext from '../utils/UserContext';
 import { useSelector } from 'react-redux';
 // import store from '../utils/store';
 
-export const Title = ()=> (<a href='/'><img className='h-28 p-2'
+export const Title = ()=> (<a href='/'><img data-testid="logo" className='h-28 p-2'
                  alt='logo'
                  src={Logo}></img>
                  </a>);
@@ -27,10 +27,10 @@ const Header = ()=>{
             <li className='px-2 font-medium'><Link to='/about'>About Us</Link></li>
             <li className='px-2 font-medium'><Link to='/contact'>Contact Us</Link></li>
             <li className='px-2 font-medium'><Link to='/instamart'>Instamart</Link></li>
-            <li className='px-2 font-medium'><Link to='/cart'>Cart - {cartItems.length} Items</Link></li>
+            <li className='px-2 font-medium'><Link to='/cart' data-testid="cart">Cart - {cartItems.length} Items</Link></li>
         </ul>
         </div>
-        <h1 className='py-12 px-5 '> { isOnline? "🟢 Online" : "🔴 Offline"}</h1>
+        <h1 data-testid="online-status" className='py-12 px-5 '> { isOnline? "🟢 Online" : "🔴 Offline"}</h1>
        <span className='py-12 px-5'>{user.name}</span> 
         {
             isLoggedIn ? <button  className='px-3' onClick={()=> setIsLoggedIn(false)}>Logout</button> :
